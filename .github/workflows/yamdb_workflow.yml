@@ -37,7 +37,7 @@ jobs:
         python -m pip install --upgrade pip 
         # установка flake8 и его плагинов
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
-        # переход в apip_yamdb
+        # переход в api_yamdb
         cd api_yamdb
         # установка зависимостей
         pip install -r requirements.txt 
