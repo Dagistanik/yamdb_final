@@ -50,7 +50,7 @@ jobs:
         #<корневая_папка_infra_actions>/<папка_проекта>/manage.py
         # cd infra_project/
         # запустить написанные разработчиком тесты
-        python pytest
+        pytest
 
  # .github/workflows/main.yml
 
