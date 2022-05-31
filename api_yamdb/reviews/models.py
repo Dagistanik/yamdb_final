@@ -1,9 +1,10 @@
 from datetime import date
 
-from api_yamdb.settings import SCORE_MAX, SCORE_MIN
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from users.models import User
+
+from api_yamdb.settings import SCORE_MAX, SCORE_MIN
 
 
 class Category(models.Model):

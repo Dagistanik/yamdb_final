@@ -12,6 +12,7 @@ class ConfirmationCodeGenerator(PasswordResetTokenGenerator):
             )
         if user.password:
             return f'{user.pk}{user.password}{login_timestamp}{timestamp}'
+        return f'{user.pk}{user.password}{login_timestamp}{timestamp}'
 
 
 default_token_generator = ConfirmationCodeGenerator()

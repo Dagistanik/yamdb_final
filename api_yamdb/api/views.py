@@ -1,4 +1,4 @@
-from api_yamdb.settings import FROM_EMAIL
+from api.tokens import default_token_generator
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
@@ -11,7 +11,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import AccessToken
 from reviews.models import Category, Genre, GenreTitle, Review, Title
 
-from api.tokens import default_token_generator
+from api_yamdb.settings import FROM_EMAIL
 
 from .custom_filters import CategoryFilter
 from .mixins import BaseViewSet
@@ -96,15 +96,13 @@ class TitleViewSet(viewsets.ModelViewSet):
         return TitleSerializer
 
     def get_queryset(self):
-        queryset = Title.objects.all()
         genre = self.request.query_params.get('genre')
         if genre is not None:
             genre = get_object_or_404(Genre, slug=genre)
             title_list = GenreTitle.objects.values_list(
                 'title', flat=True).filter(genre_id=genre)
-
-            queryset = Title.objects.filter(id__in=title_list)
-        return queryset
+            return Title.objects.filter(id__in=title_list)
+        return Title.objects.all()
 
     def perform_update(self, serializer):
         category_slug = self.request.data['category']
