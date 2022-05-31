@@ -2,10 +2,9 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 
-from reviews.models import Category, Comment, Genre, GenreTitle, Review, Title
 from api.tokens import default_token_generator
-
-from api_yamdb.settings import SCORE_MIN, SCORE_MAX
+from api_yamdb.settings import SCORE_MAX, SCORE_MIN
+from reviews.models import Category, Comment, Genre, GenreTitle, Review, Title
 
 User = get_user_model()
 
@@ -115,8 +114,8 @@ class TitleSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         if 'genre' not in self.initial_data:
-            titles = Title.objects.create(**validated_data)
-            return titles
+            # titles = Title.objects.create(**validated_data)
+            return Title.objects.create(**validated_data)
         genres = validated_data.pop('genre')
         titles = Title.objects.create(**validated_data)
         for genre in genres:

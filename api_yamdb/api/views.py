@@ -10,6 +10,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import AccessToken
 
 from reviews.models import Category, Genre, GenreTitle, Review, Title
+
 from .custom_filters import CategoryFilter
 from .mixins import BaseViewSet
 from .permissions import AuthorAdminModer, IsAdminOrReadOnly
@@ -20,7 +21,6 @@ from .serializers import (
 )
 from api.tokens import default_token_generator
 from api_yamdb.settings import FROM_EMAIL
-
 
 User = get_user_model()
 
