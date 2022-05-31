@@ -1,3 +1,4 @@
+from api_yamdb.settings import FROM_EMAIL
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
@@ -8,19 +9,17 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import AccessToken
-
 from reviews.models import Category, Genre, GenreTitle, Review, Title
+
+from api.tokens import default_token_generator
 
 from .custom_filters import CategoryFilter
 from .mixins import BaseViewSet
 from .permissions import AuthorAdminModer, IsAdminOrReadOnly
-from .serializers import (
-    CategorySerializer, CommentSerializer, GenreSerializer, MeSerializer,
-    ReviewSerializer, SignupUserSerializer, TitleGETSerializer,
-    TitleSerializer, TokenSerializer, UsersSerializer,
-)
-from api.tokens import default_token_generator
-from api_yamdb.settings import FROM_EMAIL
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, MeSerializer, ReviewSerializer,
+                          SignupUserSerializer, TitleGETSerializer,
+                          TitleSerializer, TokenSerializer, UsersSerializer)
 
 User = get_user_model()
 
