@@ -4,11 +4,12 @@ services:
   db:
     image: postgres:13.0-alpine
     volumes:
-     -pg_data:/var/lib/postgresql/data/
+     - pg_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
     restart: always
   web:
+    image: dagistanik/infra_actions:v30.05.2022
     build: ../api_yamdb
     restart: always
     volumes:
