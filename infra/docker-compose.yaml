@@ -9,7 +9,7 @@ services:
       - ./.env
     restart: always
   web:   
-    image: dagistanik/infra_actions:latest
+    image: dagistanik/infra_actions:v30.05.2022
     # build: ../api_yamdb
     restart: always
     volumes:

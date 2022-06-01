@@ -44,8 +44,7 @@ jobs:
           with:
             context: api_yamdb/
             push: true
-            tags: dagistanik/infra_actions:latest
-
+            tags: dagistanik/infra_actions:v30.05.2022
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
