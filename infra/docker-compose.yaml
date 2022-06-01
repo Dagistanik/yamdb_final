@@ -10,7 +10,7 @@ services:
     restart: always
   web:   
     image: dagistanik/infra_actions:latest
-    build: ../api_yamdb
+    # build: ../api_yamdb
     restart: always
     volumes:
       - static_value:/app/static/
