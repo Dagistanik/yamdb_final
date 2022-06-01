@@ -9,7 +9,7 @@ services:
       - ./.env
     restart: always
   web:   
-    image: dagistanik/infra_actions:v30.05.2022
+    image: dagistanik/infra_actions:latest
     # build: ../api_yamdb
     restart: always
     volumes:
@@ -28,7 +28,7 @@ services:
       - "80:80"
 
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      # - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
 
       - static_value:/var/html/static/
 
